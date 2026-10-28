@@ -1,0 +1,19 @@
+﻿version: 0.1.1-alpha.{build}
+image: Visual Studio 2022
+skip_tags: false
+cache: []
+build_script:
+  - ps: .\build\Build-P0.ps1
+test_script:
+  - ps: |
+      $ErrorActionPreference = 'Stop'
+      $exe = Join-Path $env:APPVEYOR_BUILD_FOLDER 'artifacts\windows-x64\OpenClawNew.P0.exe'
+      if (-not (Test-Path -LiteralPath $exe -PathType Leaf)) { throw 'P0_ARTIFACT_MISSING' }
+      $output = & $exe --selftest
+      if ($LASTEXITCODE -ne 0) { throw 'P0_SELFTEST_EXIT_NONZERO' }
+      $summary = ($output -join '') | ConvertFrom-Json
+      if ($summary.tests -ne 15 -or $summary.failed -ne 0 -or $summary.type -ne 'PURE_CONTRACT_ONLY_NOT_SCM_E2E') { throw 'P0_SELFTEST_CONTRACT_MISMATCH' }
+      Write-Host 'P0_SELFTEST_PASS_15_0_SCM_E2E_NOT_TESTED'
+artifacts:
+  - path: artifacts\windows-x64\OpenClawNew.P0.exe
+    name: OpenClawNew.P0.exe
