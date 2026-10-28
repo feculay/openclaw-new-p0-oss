@@ -1,7 +1,6 @@
 version: 0.1.1-alpha
 image: Visual Studio 2022
 skip_tags: false
-cache: []
 build_script:
   - ps: .\build\Build-P0.ps1
 test_script:
