@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<artifact-configuration xmlns="http://signpath.io/artifact-configuration/v1">
+  <pe-file path="OpenClawNew.P0.exe"
+           product-name="OpenClaw New P0"
+           product-version="0.1.1-alpha"
+           file-version="0.1.1.0">
+    <authenticode-sign />
+  </pe-file>
+</artifact-configuration>
