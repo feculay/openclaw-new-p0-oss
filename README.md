@@ -42,4 +42,4 @@ repository should be treated as a signed production release.
 
 MIT license: LICENSE. Privacy: PRIVACY.md. Security: SECURITY.md.
 Maintainer: https://github.com/feculay
-Version: 0.1.0-alpha source preview.
+Version: 0.1.1-alpha source preview.
